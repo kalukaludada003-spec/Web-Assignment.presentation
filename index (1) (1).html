@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bastola Kamal | Computer Engineering Portfolio</title>
+<meta name="description" content="Bastola Kamal — Computer Engineering student portfolio. Coding, football, travelling and photography.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root{
+  --bg:#f7f8fc; --panel:rgba(255,255,255,.86); --line:rgba(112,72,180,.18);
+  --text:#171322; --muted:#6f687d; --cyan:#7c3aed; --violet:#5b21b6;
+  --pink:#db2777; --green:#f6c86e;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Manrope,Arial,sans-serif;color:var(--text);background:var(--bg);
+  overflow-x:hidden;line-height:1.6;
+}
+body:before{
+  content:"";position:fixed;inset:0;z-index:-5;
+  background:
+    radial-gradient(circle at 15% 15%,rgba(124,58,237,.10),transparent 28%),
+    radial-gradient(circle at 85% 20%,rgba(219,39,119,.09),transparent 30%),
+    radial-gradient(circle at 55% 90%,rgba(124,58,237,.08),transparent 30%);
+}
+body:after{
+  content:"";position:fixed;inset:0;z-index:-4;opacity:.18;
+  background-image:linear-gradient(rgba(100,80,130,.08) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(100,80,130,.08) 1px,transparent 1px);
+  background-size:45px 45px;
+  mask-image:linear-gradient(to bottom,black,transparent 92%);
+}
+a{color:inherit;text-decoration:none}
+.container{width:min(1120px,92%);margin:auto}
+.nav{
+  position:fixed;top:18px;left:50%;transform:translateX(-50%);
+  width:min(1080px,92%);z-index:100;padding:12px 16px;
+  display:flex;align-items:center;justify-content:space-between;
+  border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.82);
+  backdrop-filter:blur(20px);box-shadow:0 15px 50px rgba(50,35,80,.10);
+}
+.logo{font-weight:800;letter-spacing:-1px;font-size:18px}
+.logo b{color:var(--cyan)}
+.navlinks{display:flex;gap:6px}
+.navlinks a{padding:9px 13px;border-radius:12px;color:#5f586d;font-size:13px;transition:.25s}
+.navlinks a:hover{color:#fff;background:rgba(216,108,255,.08);box-shadow:0 0 20px rgba(216,108,255,.12)}
+.menu{display:none;background:none;border:0;color:white;font-size:24px}
+.hero{min-height:100vh;display:grid;place-items:center;padding:140px 0 80px}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center}
+.eyebrow{
+  display:inline-flex;gap:9px;align-items:center;border:1px solid rgba(246,200,110,.22);
+  background:rgba(246,200,110,.06);padding:8px 12px;border-radius:999px;
+  color:#ffe7a8;font:12px "DM Mono",monospace;margin-bottom:22px;
+}
+.dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 15px var(--green);animation:pulse 1.5s infinite}
+h1{font-size:clamp(48px,7vw,88px);line-height:.98;letter-spacing:-5px;margin-bottom:25px}
+.gradient{background:linear-gradient(100deg,#fff,var(--cyan),#f0b6ff,var(--pink));-webkit-background-clip:text;color:transparent;background-size:220%;animation:shift 5s ease infinite}
+.hero p{max-width:650px;color:var(--muted);font-size:17px}
+.buttons{display:flex;gap:12px;margin:30px 0;flex-wrap:wrap}
+.btn{padding:13px 18px;border-radius:13px;border:1px solid var(--line);font-weight:700;font-size:14px;transition:.25s}
+.btn.primary{background:linear-gradient(100deg,var(--cyan),#ff3cac);color:#160b20;border:0;box-shadow:0 0 35px rgba(216,108,255,.20)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(216,108,255,.12)}
+.stats{display:flex;gap:30px}.stat strong{font-size:22px}.stat span{display:block;color:#657396;font:10px "DM Mono",monospace;text-transform:uppercase;letter-spacing:1px}
+.avatar-wrap{position:relative;height:500px;display:grid;place-items:center}
+.avatar{
+  width:310px;height:390px;position:relative;border-radius:160px 160px 80px 80px;
+  background:linear-gradient(145deg,#ffffff,#ece8f5);border:1px solid rgba(216,108,255,.35);
+  box-shadow:0 0 70px rgba(216,108,255,.15),inset 0 0 50px rgba(139,92,246,.14);
+  animation:float 5s ease-in-out infinite;
+}
+.avatar:before{
+  content:"";position:absolute;width:155px;height:185px;left:77px;top:63px;border-radius:48% 48% 44% 44%;
+  background:linear-gradient(135deg,#d79b79,#f3bd99);box-shadow:inset -18px -12px 35px rgba(95,46,45,.2);
+}
+.hair{position:absolute;width:170px;height:100px;left:70px;top:43px;border-radius:55% 50% 25% 35%;background:#101525;z-index:2;transform:rotate(-5deg)}
+.eye{position:absolute;top:133px;width:12px;height:7px;border-radius:50%;background:#14192b;z-index:3}
+.eye.left{left:116px}.eye.right{left:181px}
+.nose{position:absolute;left:151px;top:145px;width:10px;height:30px;border-right:2px solid rgba(120,70,60,.35);z-index:3}
+.smile{position:absolute;left:140px;top:181px;width:32px;height:12px;border-bottom:3px solid #7e3f49;border-radius:50%;z-index:3}
+.body{position:absolute;left:36px;right:36px;bottom:0;height:155px;border-radius:80px 80px 45px 45px;background:linear-gradient(135deg,#e8e2f4,#c8b9df);border-top:1px solid rgba(120,170,255,.2)}
+.ring{position:absolute;inset:-22px;border:1px solid rgba(216,108,255,.22);border-radius:50%;animation:spin 16s linear infinite}
+.ring.two{inset:28px;border-color:rgba(255,78,205,.16);animation-direction:reverse;animation-duration:11s}
+.tag{position:absolute;padding:8px 11px;border-radius:10px;background:rgba(255,255,255,.92);border:1px solid var(--line);font:11px "DM Mono";box-shadow:0 10px 30px rgba(50,35,80,.12)}
+.t1{top:50px;right:0;color:var(--cyan)}.t2{bottom:70px;left:-20px;color:#e4b8ff}.t3{top:190px;right:-35px;color:#ff8bd8}
+.marquee{border-block:1px solid var(--line);overflow:hidden;background:rgba(124,58,237,.035)}
+.track{width:max-content;display:flex;gap:55px;padding:18px 0;animation:marquee 20s linear infinite;color:#756b82;font:12px "DM Mono";letter-spacing:3px}
+section{padding:110px 0}
+.section-head{margin-bottom:40px}.kicker{font:11px "DM Mono";color:var(--cyan);letter-spacing:2px;text-transform:uppercase}.section-head h2{font-size:42px;letter-spacing:-2px;margin:8px 0}.section-head p{color:var(--muted);max-width:650px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{
+  min-height:270px;padding:25px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,rgba(255,255,255,.96),rgba(245,242,250,.92));
+  position:relative;overflow:hidden;transition:.35s;
+}
+.card:before{content:"";position:absolute;width:150px;height:150px;right:-60px;top:-60px;background:var(--cyan);filter:blur(60px);opacity:.12}
+.card:hover{transform:translateY(-8px);border-color:rgba(216,108,255,.45);box-shadow:0 25px 70px rgba(55,35,90,.13)}
+.icon{font-size:28px;margin-bottom:45px}.card small{font:10px "DM Mono";color:#7b7188}.card h3{font-size:21px;margin:6px 0}.card p{color:var(--muted);font-size:14px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.panel{padding:30px;border:1px solid var(--line);border-radius:24px;background:var(--panel);backdrop-filter:blur(12px)}
+.panel h3{margin-bottom:15px}.panel p{color:var(--muted)}
+.interests{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.interest{padding:25px;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.88);transition:.3s}
+.interest:hover{transform:translateY(-5px);border-color:rgba(216,108,255,.5)}
+.interest .emoji{font-size:30px}.interest h3{margin:12px 0 5px}.interest p{color:var(--muted);font-size:13px}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.contact-list{display:grid;gap:12px;margin-top:22px}
+.contact-item{padding:15px;border:1px solid var(--line);border-radius:14px;color:#c7d2ef}
+.contact-item span{display:block;color:#786f84;font:10px "DM Mono";margin-bottom:3px}
+footer{border-top:1px solid var(--line);padding:30px 0;color:#777083;font-size:12px}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}.reveal.show{opacity:1;transform:none}
+@keyframes pulse{50%{opacity:.35;transform:scale(.7)}}@keyframes shift{50%{background-position:100%}}
+@keyframes float{50%{transform:translateY(-13px)}}@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@media(max-width:800px){
+ .navlinks{display:none}.menu{display:block}.nav.open .navlinks{display:flex;position:absolute;top:62px;left:0;right:0;flex-direction:column;background:#ffffff;border:1px solid var(--line);padding:10px;border-radius:16px}
+ .hero-grid,.about-grid,.contact{grid-template-columns:1fr}.hero{padding-top:130px}.avatar-wrap{height:430px}.cards{grid-template-columns:1fr}.interests{grid-template-columns:1fr 1fr}h1{letter-spacing:-3px}
+}
+@media(max-width:480px){.interests{grid-template-columns:1fr}.avatar{transform:scale(.8)}.stats{gap:16px}.section-head h2{font-size:34px}}
+</style>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <a class="logo" href="#home">BK <b>/</b> Bastola.</a>
+  <div class="navlinks">
+    <a href="#home">Home</a><a href="#about">About</a><a href="#projects">Projects</a><a href="#interests">Interests</a><a href="#contact">Contact</a>
+  </div>
+  <button class="menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+</nav>
+
+<main>
+<section class="hero" id="home">
+<div class="container hero-grid">
+<div class="reveal">
+  <div class="eyebrow"><span class="dot"></span> COMPUTER ENGINEERING STUDENT</div>
+  <h1>Building the <span class="gradient">digital future.</span></h1>
+  <p>I'm <strong>Bastola Kamal</strong>, a Computer Engineering student at STU. I enjoy coding, exploring new places, football and capturing moments through photography.</p>
+  <div class="buttons"><a class="btn primary" href="#projects">Explore Portfolio ↗</a><a class="btn" href="#contact">Let's Connect</a></div>
+  <div class="stats"><div class="stat"><strong>01</strong><span>Student</span></div><div class="stat"><strong>04</strong><span>Interests</span></div><div class="stat"><strong>∞</strong><span>Curiosity</span></div></div>
+</div>
+<div class="avatar-wrap reveal">
+ <div class="ring"></div><div class="ring two"></div>
+ <div class="avatar"><div class="hair"></div><div class="eye left"></div><div class="eye right"></div><div class="nose"></div><div class="smile"></div><div class="body"></div></div>
+ <div class="tag t1">&lt;/code&gt;</div><div class="tag t2">CREATE_01</div><div class="tag t3">STU • CE</div>
+</div>
+</div>
+</section>
+
+<div class="marquee"><div class="track">CODE ✦ CREATE ✦ EXPLORE ✦ CAPTURE ✦ CODE ✦ CREATE ✦ EXPLORE ✦ CAPTURE ✦ CODE ✦ CREATE ✦ EXPLORE ✦ CAPTURE ✦</div></div>
+
+<section id="about"><div class="container">
+<div class="section-head reveal"><span class="kicker">01 / About</span><h2>Curious by nature.<br>Technical by choice.</h2><p>A simple introduction to the person behind the interface.</p></div>
+<div class="about-grid">
+<div class="panel reveal"><h3>Education</h3><p>Currently studying <strong>Computer Engineering at STU</strong>, building a foundation around technology, problem solving and digital creation.</p></div>
+<div class="panel reveal"><h3>My Approach</h3><p>I like learning by building: turning ideas into interfaces, experimenting with code, exploring visual design and continuously improving.</p></div>
+</div>
+</div></section>
+
+<section id="projects"><div class="container">
+<div class="section-head reveal"><span class="kicker">02 / Projects</span><h2>Things I'm building.</h2><p>Concept and portfolio projects representing my current direction and future work.</p></div>
+<div class="cards">
+<div class="card reveal"><div class="icon">⌘</div><small>WEB / HTML + CSS</small><h3>Personal Portfolio</h3><p>A futuristic personal site focused on clean structure, modern styling, responsive layouts and interactive effects.</p></div>
+<div class="card reveal"><div class="icon">◈</div><small>CONCEPT / CODING</small><h3>Code Lab</h3><p>A future space for experiments, programming exercises and small technical projects as my skills grow.</p></div>
+<div class="card reveal"><div class="icon">◉</div><small>CREATIVE / PHOTO</small><h3>Visual Journal</h3><p>A concept collection for travel scenes, football moments and photography experiments.</p></div>
+</div>
+</div></section>
+
+<section id="interests"><div class="container">
+<div class="section-head reveal"><span class="kicker">03 / Interests</span><h2>What keeps me moving.</h2></div>
+<div class="interests">
+<div class="interest reveal"><div class="emoji">💻</div><h3>Coding</h3><p>Building, experimenting and learning through technology.</p></div>
+<div class="interest reveal"><div class="emoji">⚽</div><h3>Football</h3><p>Energy, competition, teamwork and the love of the game.</p></div>
+<div class="interest reveal"><div class="emoji">✈️</div><h3>Travelling</h3><p>Discovering new places and collecting new experiences.</p></div>
+<div class="interest reveal"><div class="emoji">📷</div><h3>Photography</h3><p>Turning everyday moments into visual stories.</p></div>
+</div>
+</div></section>
+
+<section id="contact"><div class="container">
+<div class="section-head reveal"><span class="kicker">04 / Contact</span><h2>Let's create something.</h2><p>Interested in connecting? Reach out through the links below.</p></div>
+<div class="contact">
+<div class="panel reveal"><h3>Get in touch</h3><div class="contact-list">
+<a class="contact-item" href="mailto:bastola.kamal.demo@gmail.com"><span>EMAIL</span>bastola.kamal.demo@gmail.com ↗</a>
+<a class="contact-item" href="https://www.stu.edu/" target="_blank" rel="noopener"><span>UNIVERSITY</span>STU — Computer Engineering ↗</a>
+</div></div>
+<div class="panel reveal"><h3>Available for</h3><p>Learning opportunities, creative collaborations, coding projects and conversations around technology.</p><div class="buttons"><a class="btn primary" href="mailto:bastola.kamal.demo@gmail.com">Send Email</a></div></div>
+</div>
+</div></section>
+</main>
+<footer><div class="container">© <span id="year"></span> Bastola Kamal · Built with HTML & CSS.</div></footer>
+<script>
+document.getElementById("year").textContent=new Date().getFullYear();
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")}),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+document.querySelectorAll(".navlinks a").forEach(a=>a.addEventListener("click",()=>document.getElementById("nav").classList.remove("open")));
+</script>
+</body>
+</html>
